@@ -12,6 +12,7 @@ RUN mv MediaInfo/Project/GNU/CLI/mediainfo . && strip mediainfo
 
 FROM scratch
 
+WORKDIR /input
 COPY --from=builder /lib/ld-musl-*.so.1 /lib/libz.so.1  /lib/
 COPY --from=builder /source/mediainfo /usr/bin/mediainfo
 ENTRYPOINT [ "/usr/bin/mediainfo" ]
